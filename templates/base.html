@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template de Página Web</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* Estilos para el mensaje de error */
+        #mensaje-error {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/static/images/barra.png" alt="Descripción de la imagen" class="header-img">
+        </div>
+    </header>
+
+    <div class="body-content">
+        <div class="left-side">
+            <img src="/static/images/mapa.png" alt="Descripción de la imagen" class="body-img">
+            <div class="input-container">
+                <input type="text" id="direccion" placeholder="Ingrese dirección" class="input-box">
+                <button class="button buscar">Buscar</button>
+                <div id="mensaje-error">
+                    Valor Inexistente
+                    <button onclick="cerrarMensaje()" style="margin-left: 10px;">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="center-side">
+            <nav>
+                <ul>
+                    <li><a href="#" class="button ndvi">NDVI</a></li>
+                    <li><a href="#" class="button rgb">RGB</a></li>
+                    <li><a href="#" class="button refrescar">REFRESCAR</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-side">
+            <div class="image-display">
+                <img id="ndvi-image" src="/static/images/prueba1.png" alt="Imagen de NDVI" style="display: none;">
+                <img id="rgb-image" src="/static/images/prueba2.png" alt="Imagen de RGB" style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Validación del valor ingresado
+        function validarValor() {
+            const valor = parseInt(document.getElementById('direccion').value, 10);
+            const mensajeError = document.getElementById('mensaje-error');
+
+            if (isNaN(valor) || valor < 1 || valor > 143) {
+                // Muestra el mensaje de error si el valor es inválido
+                mensajeError.style.display = 'block';
+            } else {
+                mensajeError.style.display = 'none'; // Oculta el mensaje de error
+                // Aquí puedes continuar con la lógica de búsqueda
+            }
+        }
+
+        // Función para cerrar el mensaje de error
+        function cerrarMensaje() {
+            const mensajeError = document.getElementById('mensaje-error');
+            mensajeError.style.display = 'none'; // Oculta el mensaje
+        }
+
+        // Agregar evento al botón "Buscar"
+        document.querySelector('.button.buscar').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita el comportamiento por defecto
+            validarValor(); // Llama a la función de validación
+        });
+
+        // Variables para controlar la visibilidad
+        let ndviVisible = false;
+        let rgbVisible = false;
+
+        // Evento para el botón NDVI
+        document.querySelector('.ndvi').addEventListener('click', function(event) {
+            event.preventDefault();
+            ndviVisible = true;
+            document.getElementById('ndvi-image').style.display = 'block'; // Muestra NDVI
+            if (rgbVisible) {
+                document.getElementById('rgb-image').style.display = 'block'; // Muestra RGB
+            } else {
+                document.getElementById('rgb-image').style.display = 'none'; // Oculta RGB
+            }
+        });
+
+        // Evento para el botón RGB
+        document.querySelector('.rgb').addEventListener('click', function(event) {
+            event.preventDefault();
+            rgbVisible = true;
+            document.getElementById('rgb-image').style.display = 'block'; // Muestra RGB
+            if (ndviVisible) {
+                document.getElementById('ndvi-image').style.display = 'block'; // Muestra NDVI
+            } else {
+                document.getElementById('ndvi-image').style.display = 'none'; // Oculta NDVI
+            }
+        });
+
+        // Funcionalidad para el botón REFRESCAR
+        document.querySelector('.refrescar').addEventListener('click', function(event) {
+            event.preventDefault();
+            // Ocultar ambas imágenes
+            document.getElementById('ndvi-image').style.display = 'none'; // Oculta NDVI
+            document.getElementById('rgb-image').style.display = 'none'; // Oculta RGB
+            // Reiniciar las variables de visibilidad
+            ndviVisible = false;
+            rgbVisible = false;
+        });
+    </script>
+</body>
+</html>

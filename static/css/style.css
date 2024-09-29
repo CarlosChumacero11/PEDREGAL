@@ -1,0 +1,133 @@
+body {
+    font-family: 'Arial', sans-serif; /* Cambia la fuente aquí */
+    margin: 0;
+    padding: 0;
+    background-color: #eaeaea; /* Color de fondo suave */
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columnas */
+    align-items: center; /* Centra el contenido horizontalmente */
+}
+header {
+    background: #832b2f; /* Color de fondo del encabezado */
+    color: #ecf0f1; /* Color del texto en el encabezado */
+    padding: 0; /* Elimina padding para que la imagen ocupe todo el espacio */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra verticalmente los elementos */
+    height: 80px; /* Ajusta la altura según lo que desees */
+    overflow: hidden; /* Evita que la imagen se desborde */
+    width: 100%; /* Asegúrate de que ocupe el 100% del ancho */
+    position: relative; /* Asegura que el encabezado se mantenga en su lugar */
+}
+.header-img {
+    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+    height: 100%; /* La imagen ocupa el 100% de la altura del contenedor */
+    object-fit: cover; /* Ajusta la imagen para cubrir el área del contenedor */
+    display: block; /* Elimina el espacio debajo de la imagen */
+}
+.body-content {
+    display: flex; /* Mantiene la imagen y el contenedor al lado */
+    margin: 100px; /* Espacio alrededor del contenido */
+    max-width: 1700px; /* Ancho máximo de la página */
+    width: 100%; /* Asegura que ocupe el 100% del ancho */
+}
+.left-side {
+    width: 45%; /* La mitad izquierda */
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: flex-start; /* Centra los elementos horizontalmente */
+}
+
+
+.body-img {
+    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+    max-width: 1000px; /* Ajusta este valor para cambiar el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 20px; /* Espacio inferior entre la imagen y el contenedor de entrada */
+}
+.input-container {
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columnas */
+    align-items: center; /* Centra el contenido en la entrada */
+}
+.input-box {
+    padding: 10px; /* Espaciado interno del cuadro de texto */
+    margin-bottom: 10px; /* Espacio entre el cuadro de texto y el botón */
+    border: 1px solid #ccc; /* Borde del cuadro de texto */
+    border-radius: 5px; /* Bordes redondeados */
+}
+.button.buscar {
+    background-color: #28a828; /* Color de fondo del botón buscar */
+    color: #ffffff; /* Color del texto */
+}
+.button.buscar:hover {
+    background-color: #218838; /* Color de fondo al pasar el mouse */
+}
+
+/* BOTONES */
+.center-side {
+    width: 10%; /* Ocupa el 10% del ancho */
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    align-items: center; /* Centra los botones verticalmente */
+    margin-top: -80px; /* Ajusta este valor para subir los botones */
+}
+nav {
+    display: flex; /* Cambia a flexbox para un mejor control de alineación */
+    justify-content: center; /* Centra los botones */
+    margin-top: 20px; /* Espacio superior para separar de la imagen */
+}
+nav ul {
+    list-style-type: none; /* Elimina puntos de la lista */
+    display: flex; /* Usamos flexbox para los botones */
+    flex-direction: column; /* Organiza en columna */
+    padding: 0;
+    margin: 0; /* Elimina márgenes para el ul */
+}
+nav ul li {
+    margin: 10px; /* Espacio vertical entre elementos de la lista */
+}
+nav ul li a.button {
+    display: block; /* Hace que el enlace se comporte como un botón en bloque */
+    width: 80px; /* Establece un ancho fijo para los botones */
+    height: 30px; /* Establece una altura fija para los botones */
+    padding: 20px; /* Espaciado interno del botón */
+    color: #ffffff; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.1s; /* Transición suave para el color de fondo */
+    text-align: center; /* Centra el texto del botón */
+    line-height: 30px; /* Centra el texto verticalmente */
+}
+
+/* BOTONES CARACTERISTICAS */
+nav ul li a.button.ndvi {
+    background-color: #3598f5; /* Color específico para NDVI */
+} 
+nav ul li a.button.rgb {
+    background-color: #137570; /* Color específico para RGB */
+}
+nav ul li a.button.refrescar {
+    background-color: #f10f0f; /* Color específico para REFRESCAR */
+}
+nav ul li a.button:hover {
+    opacity: 0.5; /* Efecto de opacidad al pasar el mouse */
+}
+nav ul li a.button:hover {
+    background-color: #7e132a; /* Color de fondo al pasar el mouse */
+}
+
+
+/*RESOLUCION*/
+@media (max-width: 768px) {
+    .left-side {
+        width: 100%; /* Ocupa el 100% en pantallas pequeñas */
+    }
+    .body-img {
+        max-width: 90%; /* Reduce el tamaño máximo */
+    }
+}
+.right-side {
+    width: 45%; /* Ocupa el 45% del ancho */
+    /* Sin contenido, queda vacío */
+}
